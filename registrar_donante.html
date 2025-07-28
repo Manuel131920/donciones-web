@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/donante.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <title>Registro de Donante</title>
+
+    <script>
+        // Función validar campos frm proyecto
+        function validarCampos() {
+
+            // Obtenemos los inputs del formulario
+            const nombre = document.getElementById("name");
+            const email = document.getElementById("email");
+            const direccion = document.getElementById("direccion");
+            const telefono = document.getElementById("telefono");
+
+            // Validamos que los campos no esten vacios
+            if (nombre.value.trim() === "" || email.value.trim() === "" || direccion.value.trim() === "" || telefono.value.trim() === "") {
+
+                alert('Todos los campos deben de llenarse..')
+                nombre.focus();
+                return false;
+            }
+
+            return true;
+
+        }
+
+        // Función cancelar
+        function cancelarRegistro() {
+            
+            document.getElementById("name").value = "";
+            document.getElementById("email").value = "";
+            document.getElementById("direccion").value = "";
+            document.getElementById("telefono").value = "";
+
+            // verifica si hay una ventana que abrió esta (la pestaña de index.html)
+            if (window.opener) {
+                // retrocede la ventana que la abrió
+                window.opener.location.href = 'indexx1.html';
+            }
+            // cierra la ventana o pestaña actual
+            window.close();
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1>Organización sin fines de lucro</h1>
+
+    <h2>Formulario para Registro de Nuevo Donanate</h2>
+
+    <form id="frm_donante" action="registrar_donante.php" method="post" target="_blank" onsubmit="return validarCampos()">
+        <div class="lbl-nombre">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" placeholder="Nombre">
+        </div>
+
+        <div class="lbl-email">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="ejemplo@ejemple.com">
+        </div>
+
+        <div class="lbl-direccion">
+            <label for="direccion">Dirección:</label>
+            <input type="text" name="direccion" id="direccion" placeholder="avenida principal 2365 Santiago">
+        </div>
+
+        <div class="lbl-telefono">
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" name="telefono" id="telefono" placeholder="+569-XXXX-XXXX">
+        </div>
+
+        <div class="btn-donation">
+            <button type="submit" id="registrar">Registrar</button>
+            <button type="button" id="cancelar" onclick="cancelarRegistro()">Cancelar</button>
+        </div>
+    </form>
+    
+</body>
+</html>

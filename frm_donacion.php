@@ -41,6 +41,15 @@
             window.close();
         }
 
+        function validarFormulario() {
+          var nombre = document.getElementById("nombre").value;
+          if (nombre.trim() === "") {
+            alert("Por favor ingresa tu nombre.");
+            return false;
+          }
+          return true;
+    }
+
     </script>
 </head>
 <body>
